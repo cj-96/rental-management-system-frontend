@@ -1,0 +1,62 @@
+<div class ="row m-5" >
+    <div class="col-5">
+        <div class="row-md-4">
+            <label for="validationDefault01" class="form-label">Item Id</label>
+            <input type="text" class="form-control" id="validationDefault01"  required [(ngModel)]="itemObj.id">
+        </div>
+        <div class="row-md-4">
+            <label for="validationDefault02" class="form-label">Name</label>
+            <input type="text" class="form-control" id="validationDefault02" required [(ngModel)]="itemObj.name">
+        </div>
+        <div class="row-md-4">
+            <label for="validationDefault01" class="form-label">Rental Per Day</label>
+            <input type="text" class="form-control" id="validationDefault01"  required [(ngModel)]="itemObj.rentalPerDay">
+        </div>
+        <div class="row-md-4">
+            <label for="validationDefault02" class="form-label">Fine Per Day</label>
+            <input type="text" class="form-control" id="validationDefault02"  required [(ngModel)]="itemObj.finePerDay">
+        </div>
+        <div class="row-md-4">
+            <label for="validationDefault02" class="form-label">Availability</label>
+            <input type="text" class="form-control" id="validationDefault02"  required [(ngModel)]="itemObj.qty">
+        </div>
+        <div class="row m-4">
+            <div class="col-auto">
+                <button class="btn btn-primary" type="submit" (click)="addItem()">Save</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-success" type="update">Update</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-danger" type="delete">Delete</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-secondary" type="search">Search</button>
+            </div>
+        </div>
+</div>
+    <div class="col-7">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">RENTAL PER DAY</th>
+                    <th scope="col">FINE PER DAY</th>
+                    <th scope="col">AVAILABILITY</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of itemList">
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.name}}</td>
+                    <td>{{item.rentalPerDay}}</td>
+                    <td>{{item.finePerDay}}</td>
+                    <td>{{item.qty}}</td>
+                    <td><button class="btn btn-danger" type="delete">Delete</button></td>
+                    <td><button class="btn btn-success" type="update">Update</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
