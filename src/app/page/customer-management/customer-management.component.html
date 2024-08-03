@@ -1,1 +1,58 @@
-<p>customer-management works!</p>
+<app-header></app-header>
+<h1 class="text-center mb-4 bg-black p-4 text-white fw-bolder">Manage Customer</h1>
+<div class="row m-5">
+    <div class="col-5">
+        <div class="row-md-4">
+            <label for="validationDefault01" class="form-label">Customer Id</label>
+            <input type="text" class="form-control" id="validationDefault01" required [(ngModel)]="customerObj.id">
+        </div>
+        <div class="row-md-4">
+            <label for="validationDefault02" class="form-label">Name</label>
+            <input type="text" class="form-control" id="validationDefault02" required [(ngModel)]="customerObj.name">
+        </div>
+        <div class="row-md-4">
+            <label for="validationDefault01" class="form-label">City</label>
+            <input type="text" class="form-control" id="validationDefault01" required [(ngModel)]="customerObj.city">
+        </div>
+        <div class="row-md-4">
+            <label for="validationDefault02" class="form-label">Contact</label>
+            <input type="text" class="form-control" id="validationDefault02" required [(ngModel)]="customerObj.contact">
+        </div>
+        <div class="row m-4">
+            <div class="col-auto">
+                <button class="btn btn-primary" type="submit" (click)="addCustomer()">Save</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-success" type="update" (click)="updateCustomerSave(customerObj)">Update</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-danger" type="delete" (click)="deleteCustomer(customerObj)">Delete</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-secondary" type="search">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-7">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of customerList">
+                    <th scope="row">{{customer.id}}</th>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.city}}</td>
+                    <td>{{customer.contact}}</td>
+                    <td><button class="btn btn-danger" type="delete" (click)="deleteCustomer(customer)"><i class="bi bi-trash3"></i></button></td>
+                    <td><button class="btn btn-success" type="update" (click)="updateCustomer(customer)"><i class="bi bi-pencil-square"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,1 +1,103 @@
-<p>rental-management works!</p>
+<app-header></app-header>
+<h1 class="text-center mb-4 bg-black p-4 text-white fw-bolder">Manage Rental</h1>
+<div class="row m-5">
+    <div class="col-6 card text-bg-light mb-3 ">
+        <div class="row-md-4">
+            <label for="validationDefault02" class="form-label">ID</label>
+            <input type="text" class="form-control" id="validationDefault02" required
+                [(ngModel)]="rentalDetailObj.id">
+        </div>
+        <div class="row-md-4">
+            <label for="validationDefault01" class="form-label">Hardware Item ID</label>
+            <input type="text" class="form-control" id="validationDefault01" required
+                [(ngModel)]="rentalDetailObj.hardwareItemId">
+        </div>
+        <div class="row-md-4">
+            <label for="validationDefault02" class="form-label">QTY</label>
+            <input type="text" class="form-control" id="validationDefault02" required
+                [(ngModel)]="rentalDetailObj.qty">
+        </div>
+        <div class="col-auto mt-2">
+            <button class="btn btn-primary" type="submit" (click)="addRentalDetail()">Add</button>
+        </div>
+        <table class="table mt-2">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Rental Id</th>
+                    <th scope="col">Hardware Item Id</th>
+                    <th scope="col">QTY</th>
+                    <th scope="col">Total Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rentalDetail of rentalDetailList">
+                    <th scope="row">{{rentalDetail.id}}</th>
+                    <td>{{rentalDetail.rentalId}}</td>
+                    <td>{{rentalDetail.hardwareItemId}}</td>
+                    <td>{{rentalDetail.qty}}</td>
+                    <td>{{rentalDetail.totalCost}}</td>
+                    <td><button class="btn btn-danger" type="delete" (click)="deleteRentalDetail(rentalDetail)"><i class="bi bi-trash3"></i></button></td>
+                    <td>
+                        <button class="btn btn-success" type="update" (click)="updateRentalDetail(rentalDetail)"><i class="bi bi-pencil-square"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-6 card text-bg-light mb-3">
+        <div class="row-md-4 ">
+            <label for="validationDefault01" class="form-label">ID</label>
+            <input type="text" class="form-control w-25 " id="validationDefault01" [(ngModel)]="rentalObj.id" disabled readonly>
+        </div>
+        <div class="row-md-4 mt-1">
+            <label for="validationDefault01" class="form-label">Customer ID</label>
+            <select class="form-select w-25" aria-label="Default select example" id="department"
+                [(ngModel)]="rentalObj.customerId">
+                <option *ngFor="let detail of rentalDetailList" [value]="detail.id">
+                    {{ detail.hardwareItemId }}
+                </option>
+            </select>
+        </div>
+        <div class="row-md-4 mt-1">
+            <label for="validationDefault01" class="form-label">Rental Date</label>
+            <input type="date" class="form-control w-50" id="validationDefault01" required
+                [(ngModel)]="rentalObj.rentalDate">
+        </div>
+        <div class="row-md-4 mt-1">
+            <label for="validationDefault02" class="form-label">Due Date</label>
+            <input type="date" class="form-control w-50" id="validationDefault02" required
+                [(ngModel)]="rentalObj.dueDate">
+        </div>
+        <div class="row-md-4 mt-1">
+            <label for="validationDefault02" class="form-label">Return Date</label>
+            <input type="date" class="form-control w-50" id="validationDefault02" required
+                [(ngModel)]="rentalObj.returnDate">
+        </div>
+        <div class="row-md-4 mt-1">
+            <label for="validationDefault02" class="form-label" disabled readonly>Fine</label>
+            <input type="text" class="form-control w-50" id="validationDefault02" required [(ngModel)]="rentalObj.fine">
+        </div>
+
+        <div class="row-md-4 mt-1">
+            <label for="validationDefault02" class="form-label" disabled readonly>Total Cost</label>
+            <input type="text" class="form-control w-50" id="validationDefault02" required [(ngModel)]="rentalObj.totalCost">
+        </div>
+        <div class="row m-4">
+            <div class="col-auto">
+                <button class="btn btn-primary" type="submit" (click)="addRental()">Save</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-success" type="update" (click)="updateRentalSave(rentalObj)">Update</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-danger" type="delete" (click)="deleteRental(rentalObj)">Delete</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-secondary" type="search">Search</button>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,3 +1,5 @@
+<app-header></app-header>
+<h1 class="text-center mb-4 bg-black p-4 text-white fw-bolder">Manage Item</h1>
 <div class ="row m-5" >
     <div class="col-5">
         <div class="row-md-4">
@@ -25,13 +27,10 @@
                 <button class="btn btn-primary" type="submit" (click)="addItem()">Save</button>
             </div>
             <div class="col-auto">
-                <button class="btn btn-success" type="update">Update</button>
+                <button class="btn btn-success" type="update" (click)="updateItemSave(itemObj)">Update</button>
             </div>
             <div class="col-auto">
-                <button class="btn btn-danger" type="delete">Delete</button>
-            </div>
-            <div class="col-auto">
-                <button class="btn btn-secondary" type="search">Search</button>
+                <button class="btn btn-danger" type="delete" (click)="deleteItem(itemObj)">Delete</button>
             </div>
         </div>
 </div>
@@ -53,8 +52,8 @@
                     <td>{{item.rentalPerDay}}</td>
                     <td>{{item.finePerDay}}</td>
                     <td>{{item.qty}}</td>
-                    <td><button class="btn btn-danger" type="delete">Delete</button></td>
-                    <td><button class="btn btn-success" type="update">Update</button></td>
+                    <td><button class="btn btn-danger" type="delete" (click)="deleteItem(item)"><i class="bi bi-trash3"></i></button></td>
+                    <td><button class="btn btn-success" type="update" (click)="updateItem(item)"><i class="bi bi-pencil-square"></i></button></td>
                 </tr>
             </tbody>
         </table>
